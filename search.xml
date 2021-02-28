@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>test_page</title>
+      <link href="2021/02/28/test-page/"/>
+      <url>2021/02/28/test-page/</url>
+      
+        <content type="html"><![CDATA[<p>##使用OpenCV实现Halcon算法（2）形状匹配，shape_based_matching<br><a href="https://blog.csdn.net/libaineu2004/article/details/103026348">https://blog.csdn.net/libaineu2004/article/details/103026348</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> OpenCV </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Function </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>test_mysite</title>
       <link href="2021/02/28/test-mysite/"/>
       <url>2021/02/28/test-mysite/</url>
