@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>copy</title>
+      <link href="2021/03/03/copy/"/>
+      <url>2021/03/03/copy/</url>
+      
+        <content type="html"><![CDATA[<p>#HelloWord<br>this is a new world!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> function </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>static静态变量的作用</title>
       <link href="2021/03/03/1.static%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
       <url>2021/03/03/1.static%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
