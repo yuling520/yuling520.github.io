@@ -212,7 +212,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="4">
-<input type="hidden" id="yelog_site_word_count" value="327">
+<input type="hidden" id="yelog_site_word_count" value="331">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -273,7 +273,7 @@
     <nav id="title-list-nav">
         
         <a  class="All "
-           href="/2021/03/03/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8/"
+           href="/2021/03/03/static/"
            data-tag=""
            data-author="" >
             <span class="post-title" title=""></span>
@@ -322,7 +322,7 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-静态成员变量的作用" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-static" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
@@ -332,12 +332,12 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2021-03-03 20:49:41'>2021-03-03 20:49</time>
+            Created At : <time class="date" title='Updated At: 2021-03-03 20:56:57'>2021-03-03 20:49</time>
         
     </div>
     <div class="article-meta">
         
-        <span>Count:232</span>
+        <span>Count:236</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -389,19 +389,26 @@
 <h1 id="3-共享对象"><a href="#3-共享对象" class="headerlink" title="3.共享对象"></a>3.共享对象</h1><p>&emsp;&emsp;不属于特定的类对象，未实例化对象就已存在（定义时需分配空间）；非静态成员每个类对象都有自己的复制品；</p>
 <h1 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4.注意事项"></a>4.注意事项</h1><ul>
 <li>静态成员变量必须初始化（cpp中）</li>
-<li>静态成员函数不具备<code>this</code>指针，无法访问类的非静态数据成员，只能调用其余静态函数<h1 id="5-代码测试"><a href="#5-代码测试" class="headerlink" title="5.代码测试"></a>5.代码测试</h1>  #include &lt;stdio.h&gt;<br>  void count();<br>  int main(void)<br>  {<pre><code>  int i=0;
-  for (i = 0;i &lt;= 5;i++)
-  &#123;
-          count();
-  &#125;
-  return 0;
+<li>静态成员函数不具备<code>this</code>指针，无法访问类的非静态数据成员，只能调用其余静态函数<h1 id="5-代码测试"><a href="#5-代码测试" class="headerlink" title="5.代码测试"></a>5.代码测试</h1><pre><code class="c++">#include &lt;stdio.h&gt;
+void count();
+int main(void)
+&#123;
+    int i=0;
+    for (i = 0;i &lt;= 5;i++)
+    &#123;
+            count();
+    &#125;
+    return 0;
+&#125;
+void count()
+&#123;
+    /*声明一个静态局部变量*/
+    static num = 0;
+    num++;
+    printf(&quot;%d\n&quot;,num);
+&#125;
 </code></pre>
-  }<br>  void count()<br>  {<pre><code>  /*声明一个静态局部变量*/
-  static num = 0;
-  num++;
-  printf(&quot;%d\n&quot;,num);
-</code></pre>
-  }</li>
+</li>
 </ul>
 
       
