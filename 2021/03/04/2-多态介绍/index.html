@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2.多态介绍 | MileSnail</title>
+  <meta name="keywords" content=" Function ">
+  <meta name="description" content="2.多态介绍 | MileSnail">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="today is2021&#x2F;02&#x2F;28">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://example.com/about/index.html">
+<meta property="og:site_name" content="MileSnail">
+<meta property="og:description" content="today is2021&#x2F;02&#x2F;28">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-28T07:10:01.000Z">
+<meta property="article:modified_time" content="2021-02-28T07:11:28.961Z">
+<meta property="article:author" content="Flynn Li">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Flynn Li</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yuling520"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:2199284730@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=2199284730&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(7)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="Halcon">
+                        
+                        Halcon
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="C Plus">
+                        
+                        C Plus
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="C++">
+                        
+                        C++
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="OpenCV">
+                        
+                        OpenCV
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="7">
+<input type="hidden" id="yelog_site_word_count" value="4.9k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>function</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Function</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All C Plus "
+           href="/2021/03/04/2-%E5%A4%9A%E6%80%81%E4%BB%8B%E7%BB%8D/"
+           data-tag="Function"
+           data-author="" >
+            <span class="post-title" title="2.多态介绍">2.多态介绍</span>
+            <span class="post-date" title="2021-03-04 20:59:31">2021/03/04</span>
+        </a>
+        
+        <a  class="All Halcon "
+           href="/2021/03/03/Halcon/"
+           data-tag="Function"
+           data-author="" >
+            <span class="post-title" title="Halcon">Halcon</span>
+            <span class="post-date" title="2021-03-03 22:12:21">2021/03/03</span>
+        </a>
+        
+        <a  class="All C++ "
+           href="/2021/03/03/copy/"
+           data-tag="function"
+           data-author="" >
+            <span class="post-title" title="copy">copy</span>
+            <span class="post-date" title="2021-03-03 21:47:12">2021/03/03</span>
+        </a>
+        
+        <a  class="All C++ "
+           href="/2021/03/03/1.static%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8/"
+           data-tag="语法"
+           data-author="" >
+            <span class="post-title" title="1.static静态变量的作用">1.static静态变量的作用</span>
+            <span class="post-date" title="2021-03-03 21:12:00">2021/03/03</span>
+        </a>
+        
+        <a  class="All OpenCV "
+           href="/2021/02/28/test-page/"
+           data-tag="Function"
+           data-author="" >
+            <span class="post-title" title="test_page">test_page</span>
+            <span class="post-date" title="2021-02-28 15:55:56">2021/02/28</span>
+        </a>
+        
+        <a  class="All "
+           href="/2021/02/28/test-mysite/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="test_mysite">test_mysite</span>
+            <span class="post-date" title="2021-02-28 14:27:30">2021/02/28</span>
+        </a>
+        
+        <a  class="All "
+           href="/2021/02/28/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2021-02-28 14:26:38">2021/02/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-2-多态介绍" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">2.多态介绍</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="C Plus">C Plus</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">Function</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2021-03-04 21:00:50'>2021-03-04 20:59</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:4.6k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E6%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-text">多态介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E5%A4%9A%E6%80%81"><span class="toc-text">1.什么多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A4%9A%E6%80%81%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">2.多态的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8A%A8%E6%80%81%E5%A4%9A%E6%80%81%E6%88%90%E7%AB%8B%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text">3.动态多态成立的条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%9D%99%E6%80%81%E8%81%94%E7%BC%96%E5%92%8C%E5%8A%A8%E6%80%81%E8%81%94%E7%BC%96"><span class="toc-text">4.静态联编和动态联编</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8A%A8%E6%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">5.动态多态的实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E4%B8%8Evptr%E6%8C%87%E9%92%88"><span class="toc-text">5.1 虚函数表与vptr指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%A4%9A%E6%80%81%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="toc-text">5.2 多态执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%A6%82%E4%BD%95%E8%AF%81%E6%98%8Evptr%E6%8C%87%E9%92%88%E7%9A%84%E5%AD%98%E5%9C%A8"><span class="toc-text">5.3 如何证明vptr指针的存在</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">6.虚析构函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7%E3%80%81-%E5%85%B3%E4%BA%8E%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-text">7、 关于虚函数的思考题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E3%80%81%E6%8E%A5%E5%8F%A3"><span class="toc-text">8.纯虚函数、抽象类、接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E5%AE%9A%E4%B9%89-%E2%80%94-%E4%BB%A5%E6%A1%88%E4%BE%8B%E7%9A%84%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E"><span class="toc-text">8.1 定义 — 以案例的方式说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E7%89%B9%E7%82%B9"><span class="toc-text">8.2 特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E5%BC%95%E5%85%A5%E5%8E%9F%E5%9B%A0"><span class="toc-text">8.3 引入原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%8F%82%E8%80%83"><span class="toc-text">9.参考</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://s3.ax1x.com/2021/03/04/6ZmZD0.png" alt="6ZmZD0.png" title="c++多态"></p>
+<h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><ul>
+<li>虚函数重写：子类重新定义父类中有相同返回值、名称和参数的虚函数；  </li>
+<li>非虚函重写：子类重新定义父类中有相同名称和参数的非虚函数；  </li>
+<li>父子间的赋值兼容：子类对象可以当作父类对象使用（兼容性）；具体表现为：<ul>
+<li>子类对象可以直接赋值给父类对象；</li>
+<li>子类对象可以直接初始化父类对象；</li>
+<li>父类指针可以直接指向子类对象；</li>
+<li>父类引用可以直接引用子类对象  </li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;当发生赋值兼容时，子类对象退化为父类对象，只能访问父类中定义的成员，可以直接访问被子类覆盖的同名成员；</p>
+<pre><code>1 // 在赋值兼容原则中，子类对象退化为父类对象，子类是特殊的父类；
+2 #include &lt;iostream&gt;
+3 #include &lt;string&gt;
+4 
+5 using namespace std;
+6 
+7 class Parent
+8 &#123;
+9 public:
+10     int mi;
+11 
+12     void add(int i)
+13     &#123;
+14         mi += i;
+15     &#125;
+16     
+17     void add(int a, int b)
+18     &#123;
+19         mi += (a + b);
+20     &#125;
+21 &#125;;
+22 
+23 class Child : public Parent
+24 &#123;
+25 public:
+26     int mi;
+27     
+28     void add(int x, int y, int z)
+29     &#123;
+30         mi += (x + y + z);
+31     &#125;
+32 &#125;;
+33 
+34 int main()
+35 &#123;
+36     Parent p;
+37     Child c;
+38     
+39     c.mi = 100;
+40     p = c;             // p.mi = 0; 子类对象退化为父类对象
+41     Parent p1(c);   // p1.mi = 0; 同上
+42     Parent&amp; rp = c;
+43     Parent* pp = &amp;c;
+44     
+45     rp.add(5);             
+46     pp-&gt;add(10, 20);        
+47     
+48     cout &lt;&lt; &quot;p.mi: &quot; &lt;&lt; p.mi &lt;&lt;endl;                           // p.mi: 0; 
+49     cout &lt;&lt; &quot;p1.mi: &quot; &lt;&lt; p1.mi &lt;&lt;endl;                       // p1.mi: 0;  
+50     cout &lt;&lt; &quot;c.Parent::mi: &quot; &lt;&lt; c.Parent::mi &lt;&lt;endl;    // c.Parent::mi: 35
+51     cout &lt;&lt; &quot;rp.mi: &quot; &lt;&lt; rp.mi &lt;&lt;endl;                        // rp.mi: 35
+52     cout &lt;&lt; &quot;pp-&gt;mi: &quot; &lt;&lt; pp-&gt;mi &lt;&lt;endl;                 // pp-&gt;mi: 35
+53     
+54     return 0;
+55 &#125;
+</code></pre>
+<p>&emsp;&emsp;在面向对象的继承关系中，我们了解到子类可以拥有父类中的所有属性与行为；但是，有时父类中提供的方法并不能满足现有的需求，所以，我们必须在子类中重写父类中已有的方法，来满足当前的需求。此时尽管我们已经实现了函数重写（这里是非虚函数重写），但是在类型兼容性原则中也不能出现我们期待的结果（不能根据指针/引用所指向的实际对象类型去调到对应的重写函数）。接下来我们用代码来复现这个情景：</p>
+<pre><code>1 #include &lt;iostream&gt;
+ 2 #include &lt;string&gt;
+ 3 
+ 4 using namespace std;
+ 5 
+ 6 class Parent
+ 7 &#123;
+ 8 public:    
+ 9     void print()
+10     &#123;
+11         cout &lt;&lt; &quot;I&#39;m Parent.&quot; &lt;&lt; endl;
+12     &#125;
+13 &#125;;
+14 
+15 class Child : public Parent
+16 &#123;
+17 public:    
+18     void print()
+19     &#123;
+20         cout &lt;&lt; &quot;I&#39;m Child.&quot; &lt;&lt; endl;
+21     &#125;
+22 &#125;;
+23 
+24 void how_to_print(Parent* p)
+25 &#123;
+26     p-&gt;print();
+27 &#125;
+28 
+29 int main()
+30 &#123;
+31     Parent p;
+32     Child c;
+33     
+34     how_to_print(&amp;p);   // I&#39;m Parent    // Expected to print: I&#39;m Parent.
+35     how_to_print(&amp;c);   // I&#39;m Parent    // Expected to print: I&#39;m Child.
+36     
+37     return 0;
+38 &#125;
+</code></pre>
+<p>&emsp;&emsp;为什么会出现上述现象呢？（在赋值兼容中，父类指针/引用指向子类对象时为何不能调用子类重写函数？）<br>&emsp;&emsp;问题分析：在编译期间，编译器只能根据指针的类型判断所指向的对象；根据赋值兼容，编译器认为父类指针指向的是父类对象；因此，编译结果只可能是调用父类中定义的同名函数。  </p>
+<pre><code>void how_to_print(Parent *p)
+&#123;
+    p-&gt;print();
+&#125;
+</code></pre>
+<p>&emsp;&emsp;<u><strong>在编译这个函数的时候，编译器不可能知道指针p究竟指向了什么。但是编译器没有理由报错，于是，编译器认为最安全的做法是调用父类的print函数。因为父类和子类肯定都有相同的print函数。</strong></u><br>&emsp;&emsp;要想解决这个问题，就需要使用c++中的多态。那么如何实现c++中的多态呢？请看下面详解：  </p>
+<h1 id="多态介绍"><a href="#多态介绍" class="headerlink" title="多态介绍"></a>多态介绍</h1><h2 id="1-什么多态"><a href="#1-什么多态" class="headerlink" title="1.什么多态"></a>1.什么多态</h2><p>&emsp;&emsp;在现实生活中，多态是同一个事物在不同场景下的多种形态。<br>&emsp;&emsp;<font color=red size=5>在面向对象中，多态是指通过基类的指针或者引用，在运行时动态调用实际绑定对象函数的行为。</font><br>与之相对应的编译时绑定函数称为静态绑定。多态是设计模式的基础，多态是框架的基础。</p>
+<h2 id="2-多态的分类"><a href="#2-多态的分类" class="headerlink" title="2.多态的分类"></a>2.多态的分类</h2><p><img src="https://s3.ax1x.com/2021/03/04/6ZnULq.png#pic_center" alt="6ZnULq.png" title="多态的分类"><br>&emsp;&emsp;静态多态是编译器在编译期间完成的，编译器会根据实参类型来选择调用合适的函数，如果有合适的函数就调用，没有的话就会发出警告或者报错；<br>&emsp;&emsp;<strong>动态多态是在程序运行时根据基类的引用（指针）指向的对象来确定自己具体该调用哪一个类的虚函数。</strong></p>
+<h2 id="3-动态多态成立的条件"><a href="#3-动态多态成立的条件" class="headerlink" title="3.动态多态成立的条件"></a>3.动态多态成立的条件</h2><p>&emsp;&emsp;由之前出现的问题可知，编译器的做法并不符合我们的期望（因为编译器是根据父类指针的类型去父类中调用被重写的函数）；但是，在面向对象的多态中，我们期望的行为是 根据实际的对象类型来判断如何调用重写函数（虚函数）；  </p>
+<ol>
+<li>即当父类指针（引用）指向 父类对象时，就调用父类中定义的虚函数；</li>
+<li>即当父类指针（引用）指向 子类对象时，就调用子类中定义的虚函数；<br>这种多态行为的表现效果为：同样的调用语句在实际运行时有多种不同的表现形态。</li>
+</ol>
+<p>　　那么在c++中，如何实现这种表现效果呢？（实现多态的条件）  </p>
+<ol>
+<li><p> 要有继承   </p>
+</li>
+<li><p> 要有虚函数重写（被 virtual 声明的函数叫虚函数）</p>
+</li>
+<li><p>要有父类指针（父类引用）指向子类对象</p>
+<h2 id="4-静态联编和动态联编"><a href="#4-静态联编和动态联编" class="headerlink" title="4.静态联编和动态联编"></a>4.静态联编和动态联编</h2><p>&emsp;&emsp;静态联编：在程序的编译期间就能确定具体的函数调用；如函数重载，非虚函数重写；<br>&emsp;&emsp;动态联编：在程序实际运行后才能确定具体的函数调用；如虚函数重写，switch 语句和 if 语句；</p>
+<pre><code>1 #include &lt;iostream&gt;
+2 #include &lt;string&gt;
+3 
+4 using namespace std;
+5 
+6 class Parent
+7 &#123;
+8 public:
+9     virtual void func()
+10     &#123;
+11         cout &lt;&lt; &quot;Parent::void func()&quot; &lt;&lt; endl;
+12     &#125;
+13     
+14     virtual void func(int i)
+15     &#123;
+16         cout &lt;&lt; &quot;Parent::void func(int i) : &quot; &lt;&lt; i &lt;&lt; endl;
+17     &#125;
+18     
+19     virtual void func(int i, int j)
+20     &#123;
+21         cout &lt;&lt; &quot;Parent::void func(int i, int j) : &quot; &lt;&lt; &quot;(&quot; &lt;&lt; i &lt;&lt; &quot;, &quot; &lt;&lt; j &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+22     &#125;
+23 &#125;;
+24 
+25 class Child : public Parent
+26 &#123;
+27 public:
+28     void func(int i, int j)
+29     &#123;
+30         cout &lt;&lt; &quot;Child::void func(int i, int j) : &quot; &lt;&lt; i + j &lt;&lt; endl;
+31     &#125;
+32     
+33     void func(int i, int j, int k)
+34     &#123;
+35         cout &lt;&lt; &quot;Child::void func(int i, int j, int k) : &quot; &lt;&lt; i + j + k &lt;&lt; endl;
+36     &#125;
+37 &#125;;
+38 
+39 void run(Parent* p)
+40 &#123;
+41     p-&gt;func(1, 2);     // 展现多态的特性
+42                        // 动态联编
+43 &#125;
+44 
+45 
+46 int main()
+47 &#123;
+48     Parent p;
+49     
+50     p.func();         // 静态联编
+51     p.func(1);        // 静态联编
+52     p.func(1, 2);     // 静态联编
+53     
+54     cout &lt;&lt; endl;
+55     
+56     Child c;
+57     
+58     c.func(1, 2);     // 静态联编
+59     
+60     cout &lt;&lt; endl;
+61     
+62     run(&amp;p);
+63     run(&amp;c);
+64     
+65     return 0;
+66 &#125;
+67 /*
+68     Parent::void func()
+69     Parent::void func(int i) : 1
+70     Parent::void func(int i, int j) : (1, 2)
+71 
+72     Child::void func(int i, int j) : 3
+73 
+74     Parent::void func(int i, int j) : (1, 2)
+75     Child::void func(int i, int j) : 3
+76 */
+</code></pre>
+<h2 id="5-动态多态的实现原理"><a href="#5-动态多态的实现原理" class="headerlink" title="5.动态多态的实现原理"></a>5.动态多态的实现原理</h2><h3 id="5-1-虚函数表与vptr指针"><a href="#5-1-虚函数表与vptr指针" class="headerlink" title="5.1 虚函数表与vptr指针"></a>5.1 虚函数表与vptr指针</h3></li>
+<li><p>当类中声明虚函数时，编译器会在类中生成一个虚函数表；</p>
+</li>
+<li><p>虚函数表是一个存储类成员函数指针的数据结构；</p>
+</li>
+<li><p>虚函数表是由编译器自动生成与维护的；</p>
+</li>
+<li><p>virtual成员函数会被编译器放入虚函数表中；</p>
+</li>
+<li><p>存在虚函数时，每个对象中都有一个指向虚函数表的指针(vptr指针)。</p>
+<h3 id="5-2-多态执行过程"><a href="#5-2-多态执行过程" class="headerlink" title="5.2 多态执行过程"></a>5.2 多态执行过程</h3></li>
+<li><p> 在类中，用 virtual 声明一个函数时，就会在这个类中对应产生一张 虚函数表，将虚函数存放到该表中；</p>
+</li>
+<li><p> 用这个类创建对象时，就会产生一个 vptr指针，这个vptr指针会指向对应的虚函数表；</p>
+</li>
+<li><p>在多态调用时, vptr指针 就会根据这个对象 在对应类的虚函数表中 查找被调用的函数，从而找到函数的入口地址；</p>
+<pre><code> 》 如果这个对象是 子类的对象，那么vptr指针就会在 子类的 虚函数表中查找被调用的函数
+
+ 》 如果这个对象是 父类的对象，那么vptr指针就会在 父类的 虚函数表中查找被调用的函数
+</code></pre>
+<p><img src="https://s3.ax1x.com/2021/03/04/6Zufjs.png" alt="6Zufjs.png" title="多态执行过程"></p>
+<h3 id="5-3-如何证明vptr指针的存在"><a href="#5-3-如何证明vptr指针的存在" class="headerlink" title="5.3 如何证明vptr指针的存在"></a>5.3 如何证明vptr指针的存在</h3><pre><code>1 #include &lt;iostream&gt;
+2 #include &lt;string&gt;
+3 
+4 using namespace std;
+5 
+6 class Demo1
+7 &#123;
+8 private:
+9     int mi; // 4 bytes
+10     int mj; // 4 bytes
+11 public:
+12     virtual void print()&#123;&#125;  // 由于虚函数的存在，在实例化类对象时，就会产生1个 vptr指针
+13 &#125;;
+14 
+15 class Demo2
+16 &#123;
+17 private:
+18     int mi; // 4 bytes
+19     int mj; // 4 bytes
+20 public:
+21     void print()&#123;&#125;
+22 &#125;;
+23 
+24 int main()
+25 &#123;
+26     cout &lt;&lt; &quot;sizeof(Demo1) = &quot; &lt;&lt; sizeof(Demo1) &lt;&lt; &quot; bytes&quot; &lt;&lt; endl; // sizeof(Demo1) = 16 bytes
+27     cout &lt;&lt; &quot;sizeof(Demo2) = &quot; &lt;&lt; sizeof(Demo2) &lt;&lt; &quot; bytes&quot; &lt;&lt; endl; // sizeof(Demo2) = 8 bytes
+28     
+29     return 0;
+30 &#125;
+31 
+32 // 64bit(OS) 指针占 8 bytes
+33 // 32bit(OS) 指针占 4 bytes
+//显然，在普通的类中，类的大小 == 成员变量的大小；在有虚函数的类中，类的大小 == 成员变量的大小 + vptr指针大小。
+</code></pre>
+<h1 id="6-虚析构函数"><a href="#6-虚析构函数" class="headerlink" title="6.虚析构函数"></a>6.虚析构函数</h1><p>&emsp;&emsp;定义：用 virtual 关键字修饰析构函数，称为虚析构函数；<br>格式：virtual ~ClassName(){ … }</p>
+</li>
+</ol>
+<p>　　意义：虚析构函数用于指引 delete 运算符正确析构动态对象；（当父类指针指向子类对象时，通过父类指针去释放所有子类的内存空间）</p>
+<p>　　应用场景：在赋值兼容性原则中（父类指针指向子类对象），通过  delete 父类指针   去释放所有子类的内存空间。（动态多态调用：通过父类指针所指向的实际对象去判断如何调用 delete 运算符）</p>
+<p>　　<font color=red>！！：建议在设计基类时将析构函数声明为虚函数，为的是避免内存泄漏，否则有可能会造成派生类内存泄漏问题。</font></p>
+<ol>
+<li>构造函数可以成为虚函数吗？— 不可以</li>
+</ol>
+<p>　　    不可以。因为在构造函数执行结束后，虚函数表指针才会被正确的初始化。</p>
+<p>　　　在c++的多态中，虚函数表是由编译器自动生成与维护的，虚函数表指针是由构造函数初始化完成的，即构造函数相当于是虚函数的入口点，负责调用虚函数的前期工作；在构造函数执行的过程中，虚函数表指针有可能未被正确的初始化；由于在不同的c++编译器中，虚函数表 与 虚函数表指针的实现有所不同，所以禁止将构造函数声明为虚函数。</p>
+<p>　　2. 析造函数可以成为虚函数吗？— 虚函数，且发生多态</p>
+<p>　　    可以，并且产生动态多态。因为析构函数是在对象销毁之前被调用，即在对象销毁前  虚函数表指针是正确指向对应的虚函数表。</p>
+<p>　　3. 构造函数中可以调用虚函数发生多态吗？— 不能发生多态</p>
+<p>　　　构造函数中可以调用虚函数，但是不可能发生多态行为，因为在构造函数执行时，虚函数表指针未被正确初始化。</p>
+<p>　　4. 析构函数中可以调用虚函数发生多态吗？— 不能发生多态</p>
+<p>　　    析构函数中可以调用虚函数，但是不可能发生多态行为，因为在析构函数执行时,虚函数表指针已经被销毁。　　　</p>
+<h1 id="7、-关于虚函数的思考题"><a href="#7、-关于虚函数的思考题" class="headerlink" title="7、 关于虚函数的思考题"></a>7、 关于虚函数的思考题</h1><p> 1.构造函数可以成为虚函数吗？— 不可以<br>不可以。因为在构造函数执行结束后，虚函数表指针才会被正确的初始化。<br>在c++的多态中，虚函数表是由编译器自动生成与维护的，虚函数表指针是由构造函数初始化完成的，即构造函数相当于是虚函数的入口点，负责调用虚函数的前期工作；在构造函数执行的过程中，虚函数表指针有可能未被正确的初始化；由于在不同的c++编译器中，虚函数表 与 虚函数表指针的实现有所不同，所以禁止将构造函数声明为虚函数。<br>2.析造函数可以成为虚函数吗？— 虚函数，且发生多态<br>　　    可以，并且产生动态多态。因为析构函数是在对象销毁之前被调用，即在对象销毁前  虚函数表指针是正确指向对应的虚函数表。<br>3.构造函数中可以调用虚函数发生多态吗？— 不能发生多态<br>　　　构造函数中可以调用虚函数，但是不可能发生多态行为，因为在构造函数执行时，虚函数表指针未被正确初始化。  </p>
+<p>4.析构函数中可以调用虚函数发生多态吗？— 不能发生多态<br>　　    析构函数中可以调用虚函数，但是不可能发生多态行为，因为在析构函数执行时,虚函数表指针已经被销毁。　　　<br><font color= red>结论：在构造函数与析构函数中调用虚函数不能发生多态行为，只调用当前类中定义的函数版本! ! </font></p>
+<h1 id="8-纯虚函数、抽象类、接口"><a href="#8-纯虚函数、抽象类、接口" class="headerlink" title="8.纯虚函数、抽象类、接口"></a>8.纯虚函数、抽象类、接口</h1><h2 id="8-1-定义-—-以案例的方式说明"><a href="#8-1-定义-—-以案例的方式说明" class="headerlink" title="8.1 定义 — 以案例的方式说明"></a>8.1 定义 — 以案例的方式说明</h2><p>&emsp;&emsp;想必大家很熟悉，对于任何一个普通类来说都可以实例化出多个对象，也就是每个对象都可以用对应的类来描述，并且这些对象在现实生活中都能找到各自的原型；比如现在有一个“狗类🐶”，我们就可以用这个“狗类🐶”实例化出很多只“狗🐶”。但是，在面向对象分析时，还会发现一些抽象的概念，它描述的是一类事物，并不能反映一个具体的实物，我们把这种包含抽象概念的现象称为 抽象类。关于抽象类的例子有很多，比如：如何计算一个“图形”的面积；什么“宠物”最可爱 等等。了解了抽象类之后，那么什么是纯虚函数呢？我们现在就以 如何计算一个“图形”的面积 这个抽象类案列说明问题；在这个例子中有2个抽象概念，分别是 “图形” 与 “面积”，即什么样“图形” — 不知道，如何”求面积“或者“面积公式”是什么 — 也不知道；在这里，我们可以把”图形“看成是抽象类的类名，”面积“看成是抽象类的成员函数，因为这个成员函数无法实现，只是让外界知道有这么一回事，此处的成员函数就可以看成 纯虚函数，同时，此处的抽象类也可以看成是 接口。</p>
+<h2 id="8-2-特点"><a href="#8-2-特点" class="headerlink" title="8.2 特点"></a>8.2 特点</h2><p>纯虚函数：</p>
+<p>　　（1）只在基类中声明虚函数，并不需要在基类中定义函数体，语法格式：virtual void funtion1()=0；</p>
+<p>　　（2）“=0”是告诉编译器当前是声明纯虚函数，因此并不需要定义函数体。</p>
+<p>　　（3）纯虚函数被实现后成为虚函数；</p>
+<p>　　（4）基类中的纯虚函数就是个接口，纯虚函数不能被调用，它的存在只是为了在派生类中重新实现该方法；</p>
+<p>　　（5）c++ 规定虚析构函数必须包含声明与实现（在对象销毁前，基类中的析构函数最后一个被调用，若此时没有对应的函数实现，显然是不行的）；</p>
+<p>　　抽象类：</p>
+<p>　　（1）用于表示现实世界中的抽象概念；</p>
+<p>　　（2）是一种只能定义类型，而不能创建对象的类；但是，可以有抽象类指针 或 接口类指针，当它指向子类对象时就会发生多态；</p>
+<p>　　（3）抽象类只能用作父类被继承，子类必须实现纯虚函数的具体功能；</p>
+<p>　　（4）c++语言中没有抽象类的概念，但是可以通过纯虚函数实现抽象类；</p>
+<p>　　（5）一个c++类中存在纯虚函数就成为了抽象类；（判断条件）</p>
+<p>　　（6）如果子类没有实现纯虚函数，则子类成为抽象类。</p>
+<p>　　接口：</p>
+<p>　　（1）类中没有定义任何的成员变量；</p>
+<p>　　（2）所有的成员函数都是公有的纯虚函数；（判断条件 1 + 2）</p>
+<p>　　（3）接口是一种特殊的抽象类；</p>
+<p>　　　　　　一个类全是纯虚函数就是接口；</p>
+<p>　　　　　　一个类部分是纯虚函数就是抽象类；</p>
+<h2 id="8-3-引入原因"><a href="#8-3-引入原因" class="headerlink" title="8.3 引入原因"></a>8.3 引入原因</h2><p>（1）为了方便使用多态特性，我们常常需要在基类中声明纯虚函数。</p>
+<p>　　（2）在很多情况下，基类本身生成对象是不合情理的。例如，动物作为一个基类可以派生出老虎、孔雀等子类，但动物本身生成对象明显不合常理。</p>
+<p> 　　　　所以，为了解决上述问题，引入了纯虚函数的概念；将基类的成员函数声明为纯虚函数，则编译器要求必须在派生类中重写该成员函数以实现多态性。</p>
+<h1 id="9-参考"><a href="#9-参考" class="headerlink" title="9.参考"></a>9.参考</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/nbk-zyc/p/12274178.html#smsdt">https://www.cnblogs.com/nbk-zyc/p/12274178.html#smsdt</a> </p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '6b76eb9b3bcd60600a8e',
+            clientSecret: 'cbfc333ac5376802fc05fb69a8356ddb40a0969c',
+            repo: 'gitalk.github.io',
+            owner: 'yuling520',
+            admin: ['yelog'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021-2-28 Flynn
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+<div id="musicMouseDrag" style="position:fixed; z-index: 9999; bottom: 0; right: 0;">
+	<div id="musicDragArea" style="position: absolute; top: 0; left: 0; width: 100%;height: 10px;cursor: move; z-index: 10;"></div>
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1407551413&auto=1&height=66"></iframe>
+</div>
+<!--以下代码是为了支持随时拖动音乐控件的位置，如没有需求，可去掉下面代码-->
+<script>
+	var $DOC = $(document)
+	$('#musicMouseDrag').on('mousedown', function (e) {
+	// 阻止文本选中
+	$DOC.bind("selectstart", function () {
+	return false;
+	});
+	$('#musicDragArea').css('height', '100%');
+	var $moveTarget = $('#musicMouseDrag');
+	$moveTarget.css('border', '1px dashed grey')
+	var div_x = e.pageX - $moveTarget.offset().left;
+	var div_y = e.pageY - $moveTarget.offset().top;
+	$DOC.on('mousemove', function (e) {
+	var targetX = e.pageX - div_x;
+	var targetY = e.pageY - div_y;
+	targetX = targetX < 0 ? 0 : (targetX + $moveTarget.outerWidth() >= window.innerWidth) ? window.innerWidth - $moveTarget.outerWidth() : targetX;
+	targetY = targetY < 0 ? 0 : (targetY + $moveTarget.outerHeight() >= window.innerHeight) ? window.innerHeight - $moveTarget.outerHeight() : targetY;
+	$moveTarget.css({'left': targetX + 'px', 'top': targetY + 'px', 'bottom': 'inherit', 'right': 'inherit'})
+	}).on('mouseup', function () {
+	$DOC.unbind("selectstart");
+	$DOC.off('mousemove')
+	$DOC.off('mouseup')
+	$moveTarget.css('border', 'none')
+	$('#musicDragArea').css('height', '10px');
+	})
+	})
+</script>
+</html>
