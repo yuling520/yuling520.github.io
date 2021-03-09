@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>1.Qt线程编程</title>
+      <link href="2021/03/09/Qt%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/"/>
+      <url>2021/03/09/Qt%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<ul><li><a href="#qt%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B">QT线程编程</a></li><li><a href="#%E5%BC%80%E5%90%AF%E7%BA%BF%E7%A8%8B">开启线程</a><ul><li><a href="#1%E5%AD%90%E7%B1%BB%E5%8C%96">1.子类化</a></li><li><a href="#2movetothread">2.MoveToThread</a></li><li><a href="#3qthreadpool--qrunnable">3.QThreadPool + QRunnable</a></li><li><a href="#4qtconcurrent">4.QtConcurrent</a></li><li><a href="#5%E5%85%B3%E9%97%AD%E7%BA%BF%E7%A8%8B">5.关闭线程</a></li></ul></li><li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a><h1 id="开启线程"><a href="#开启线程" class="headerlink" title="开启线程"></a>开启线程</h1><h2 id="1-子类化"><a href="#1-子类化" class="headerlink" title="1.子类化"></a>1.子类化</h2>&emsp;&emsp;实例化该类，调用<u>start()</u>函数默认调用<u>run()</u>函数，执行完毕线程结束。<pre><code>//线程定义class MyThread : public QThread&#123;protected:  void run();&#125;;</code></pre></li></ul><p>void MyThread::run()<br>{<br>    QTcpSocket socket;<br>    …<br>    socket connectToHost(hostName, portNumber);<br>    exec();<br>}</p><pre><code></code></pre><p>//使用线程<br>MyThread thread;<br>thread.start();</p><pre><code>## 2.MoveToThread&amp;emsp;&amp;emsp;创建QObject，moveToThread移动到线程中。可将任意线程中任意对象的任意信号关联到WOrker的槽上，关联安全。</code></pre><p>//Worker类：在线程中执行的类，例如定时器超时操作<br>class Worker类 : public QObject<br>{<br>    Q_OBJECT</p><p>public slots:<br>    void doWork(const QString &amp;parameter)<br>    {<br>        QString result;<br>        // 这里是阻塞的操作<br>        emit resultReady(result);<br>    }</p><p>signals:<br>    void resultReady(const QString &amp;result);<br>};</p><p>//Controller类：线程所在的类<br>class Controller : public QObject<br>{<br>    Q_OBJECT<br>    QThread workerThread;</p><p>public:<br>    Controller()<br>    {<br>        Worker *worker = new Worker;<br>        //将worker对象的线程从主线程移动到workerThread<br>        worker-&gt;moveToThread(&amp;workerThread);<br>        //当workerThread线程结束后，会自动销毁该线程<br>        connect(&amp;workerThread, &amp;QThread::finished, worker, &amp;QObject::deleteLater);</p><pre><code>    //当Controller类发射了operate()信号，会调用worker对象的doWork槽函数    connect(this, &amp;Controller::operate, worker, &amp;Worker::doWork);    //当workerr类发射了resultReady()信号，会调用Controller对象的handleResults槽函数    connect(worker, &amp;Worker::resultReady, this, &amp;Controller::handleResults);        //最开始，启动workerThread线程    workerThread.start();&#125;~Controller() &#123;    //在析构函数中终止进程    workerThread.requestInterruption();    workerThread.quit();    workerThread.wait();&#125;</code></pre><p>public slots:<br>    void handleResults(const QString &amp;);</p><p>signals:<br>    void operate(const QString &amp;);<br>};</p><pre><code>## 3.QThreadPool + QRunnable&amp;emsp;&amp;emsp;继承QRunnable，重写run()函数，并将其传递给QThreadPool进行管理。</code></pre><p>//①声明 MyRunnable.h<br>class MyRunnable : public QRunnable<br>{<br>public:<br>    MyRunnable(const QString&amp; thread_name);<br>    void run();<br>private:<br>    QString threadName;<br>};</p><pre><code>②定义 </code></pre><p>//MyRunnable.cpp<br>#include “myrunnable.h”<br>MyRunnable::MyRunnable(const QString &amp;thread_name) : threadName(thread_name){}<br>void MyRunnable::run()<br>{<br>    qDebug()&lt;&lt;”Start thread id:”&lt;&lt;QThread::currentThreadId();<br>    int count = 0;<br>    while(true)<br>    {<br>        if(count &gt;= 10)<br>        {<br>            break;<br>        }<br>        qDebug()&lt;&lt;threadName&lt;&lt;” Count:”&lt;&lt;count++;<br>        QThread::msleep(500);<br>    }<br>}</p><pre><code>③调用</code></pre><p>//调用处<br>MyRunnable* my_runnable = new MyRunnable(“1# thread”);<br>my_runnable-&gt;setAutoDelete(true);</p><p>MyRunnable* my_runnable_2 = new MyRunnable(“2# thread”);<br>my_runnable_2-&gt;setAutoDelete(true);</p><p>threadPool.start(my_runnable);<br>threadPool.start(my_runnable_2);</p><pre><code>## 4.QtConcurrent&amp;emsp;&amp;emsp;少量代码需要使用多线程的时候使用（该函数可能不会立即运行; 函数只有在线程可用时才会运行）。  1）pro文件中添加模块  </code></pre><p>QT += concurrent  </p><pre><code>2）代码示例</code></pre><p>//示例一<br>//定义<br>QString hello(QString name)<br>{<br>    qDebug() &lt;&lt; “Hello” &lt;&lt; name &lt;&lt; “from” &lt;&lt; QThread::currentThread();<br>    return name;<br>}</p><p>//调用<br>QFuture<QString> f1 = QtConcurrent::run(hello, QString(“Alice”));<br>QFuture<QString> f2 = QtConcurrent::run(&amp;threadPool, hello, QString(“Bob”));<br>f1.waitForFinished();<br>f2.waitForFinished();</p><p>qDebug()&lt;&lt;f1.result();<br>qDebug()&lt;&lt;f2.result();</p><p>//输出<br>Hello “Alice” from QThread(0x1b1562a8, name = “Thread (pooled)”)<br>Hello “Bob” from QThread(0x1b156248, name = “Thread (pooled)”)<br>“Alice”<br>“Bob”</p><pre><code></code></pre><p>//示例二<br>#if 1<br>    //调用外部函数<br>    QFuture<void> f1 =QtConcurrent::run(func,QString(index++));<br>    //调用类成员函数<br>    QFuture<void> f2 =QtConcurrent::run(this,&amp;Widget::myFunc,QString(“aaa”));<br>#else  //使用Lambda函数实现<br>    QFuture &lt; void &gt; future =  QtConcurrent::run(<a href="">=</a>{<br>        qDebug() &lt;&lt; __FUNCTION__  &lt;&lt; QThread::currentThreadId() &lt;&lt; QThread::currentThread();<br>    });<br>    QFuture &lt; void &gt; future2 = QtConcurrent::run(<a href="">=</a>{<br>        qDebug() &lt;&lt; <strong>FUNCTION</strong>  &lt;&lt; QThread::currentThreadId() &lt;&lt; QThread::currentThread();<br>    });<br>#endif</p><pre><code>## 5.关闭线程&amp;emsp;&amp;emsp;在析构函数中使用终止函数：</code></pre><p>~WorkerThread()<br>{<br>    // 请求终止<br>    requestInterruption();<br>    quit();<br>    wait();<br>}</p><pre><code># 参考链接* Qt多线程Connect参数说明 https://www.cnblogs.com/wlzy/p/6802479.html * Qt线程池QRunnable相关函数定义 https://www.cnblogs.com/sherlock-lin/articles/11708966.html * QThread常用函数 https://www.cnblogs.com/linuxAndMcu/p/11076305.html#_label1* QT多线程编程（全） https://blog.51cto.com/9291927/1879757</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Qt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Function </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2.多态介绍</title>
       <link href="2021/03/04/2-%E5%A4%9A%E6%80%81%E4%BB%8B%E7%BB%8D/"/>
       <url>2021/03/04/2-%E5%A4%9A%E6%80%81%E4%BB%8B%E7%BB%8D/</url>

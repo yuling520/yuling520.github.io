@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MileSnail</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="MileSnail">
+  <title>1.Qt线程编程 | MileSnail</title>
+  <meta name="keywords" content=" Function ">
+  <meta name="description" content="1.Qt线程编程 | MileSnail">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="today is2021&#x2F;02&#x2F;28">
 <meta property="og:type" content="website">
@@ -56,7 +56,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -402,12 +402,71 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Qt线程编程" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%8F%B6%E8%90%BD%E9%98%81"><span class="toc-text">关于叶落阁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">1.Qt线程编程</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Qt">Qt</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">Function</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2021-03-09 22:59:56'>2021-03-09 22:58</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>Count:796</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                Comment:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E7%BA%BF%E7%A8%8B"><span class="toc-text">开启线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AD%90%E7%B1%BB%E5%8C%96"><span class="toc-text">1.子类化</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -420,37 +479,122 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于叶落阁"><a href="#关于叶落阁" class="headerlink" title="关于叶落阁"></a>关于叶落阁</h2><p><strong>叶落阁</strong> 是阁主（杨玉杰）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><a href="#qt%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B">QT线程编程</a></li>
+<li><a href="#%E5%BC%80%E5%90%AF%E7%BA%BF%E7%A8%8B">开启线程</a><ul>
+<li><a href="#1%E5%AD%90%E7%B1%BB%E5%8C%96">1.子类化</a></li>
+<li><a href="#2movetothread">2.MoveToThread</a></li>
+<li><a href="#3qthreadpool--qrunnable">3.QThreadPool + QRunnable</a></li>
+<li><a href="#4qtconcurrent">4.QtConcurrent</a></li>
+<li><a href="#5%E5%85%B3%E9%97%AD%E7%BA%BF%E7%A8%8B">5.关闭线程</a></li>
 </ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a><h1 id="开启线程"><a href="#开启线程" class="headerlink" title="开启线程"></a>开启线程</h1><h2 id="1-子类化"><a href="#1-子类化" class="headerlink" title="1.子类化"></a>1.子类化</h2>&emsp;&emsp;实例化该类，调用<u>start()</u>函数默认调用<u>run()</u>函数，执行完毕线程结束。<pre><code>//线程定义
+class MyThread : public QThread
+&#123;
+protected:
+  void run();
+&#125;;
+</code></pre>
+</li>
+</ul>
+<p>void MyThread::run()<br>{<br>    QTcpSocket socket;<br>    …<br>    socket connectToHost(hostName, portNumber);<br>    exec();<br>}</p>
+<pre><code>
+</code></pre>
+<p>//使用线程<br>MyThread thread;<br>thread.start();</p>
+<pre><code>
+## 2.MoveToThread
+&amp;emsp;&amp;emsp;创建QObject，moveToThread移动到线程中。可将任意线程中任意对象的任意信号关联到WOrker的槽上，关联安全。
+</code></pre>
+<p>//Worker类：在线程中执行的类，例如定时器超时操作<br>class Worker类 : public QObject<br>{<br>    Q_OBJECT</p>
+<p>public slots:<br>    void doWork(const QString &amp;parameter)<br>    {<br>        QString result;<br>        // 这里是阻塞的操作<br>        emit resultReady(result);<br>    }</p>
+<p>signals:<br>    void resultReady(const QString &amp;result);<br>};</p>
+<p>//Controller类：线程所在的类<br>class Controller : public QObject<br>{<br>    Q_OBJECT<br>    QThread workerThread;</p>
+<p>public:<br>    Controller()<br>    {<br>        Worker *worker = new Worker;<br>        //将worker对象的线程从主线程移动到workerThread<br>        worker-&gt;moveToThread(&amp;workerThread);<br>        //当workerThread线程结束后，会自动销毁该线程<br>        connect(&amp;workerThread, &amp;QThread::finished, worker, &amp;QObject::deleteLater);</p>
+<pre><code>    //当Controller类发射了operate()信号，会调用worker对象的doWork槽函数
+    connect(this, &amp;Controller::operate, worker, &amp;Worker::doWork);
+    //当workerr类发射了resultReady()信号，会调用Controller对象的handleResults槽函数
+    connect(worker, &amp;Worker::resultReady, this, &amp;Controller::handleResults);
+    
+    //最开始，启动workerThread线程
+    workerThread.start();
+&#125;
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+~Controller() 
+&#123;
+    //在析构函数中终止进程
+    workerThread.requestInterruption();
+    workerThread.quit();
+    workerThread.wait();
+&#125;
+</code></pre>
+<p>public slots:<br>    void handleResults(const QString &amp;);</p>
+<p>signals:<br>    void operate(const QString &amp;);<br>};</p>
+<pre><code>## 3.QThreadPool + QRunnable
+&amp;emsp;&amp;emsp;继承QRunnable，重写run()函数，并将其传递给QThreadPool进行管理。
+</code></pre>
+<p>//①声明 MyRunnable.h<br>class MyRunnable : public QRunnable<br>{<br>public:<br>    MyRunnable(const QString&amp; thread_name);<br>    void run();<br>private:<br>    QString threadName;<br>};</p>
+<pre><code>②定义 
+</code></pre>
+<p>//MyRunnable.cpp<br>#include “myrunnable.h”<br>MyRunnable::MyRunnable(const QString &amp;thread_name) : threadName(thread_name){}<br>void MyRunnable::run()<br>{<br>    qDebug()&lt;&lt;”Start thread id:”&lt;&lt;QThread::currentThreadId();<br>    int count = 0;<br>    while(true)<br>    {<br>        if(count &gt;= 10)<br>        {<br>            break;<br>        }<br>        qDebug()&lt;&lt;threadName&lt;&lt;” Count:”&lt;&lt;count++;<br>        QThread::msleep(500);<br>    }<br>}</p>
+<pre><code>③调用
+</code></pre>
+<p>//调用处<br>MyRunnable* my_runnable = new MyRunnable(“1# thread”);<br>my_runnable-&gt;setAutoDelete(true);</p>
+<p>MyRunnable* my_runnable_2 = new MyRunnable(“2# thread”);<br>my_runnable_2-&gt;setAutoDelete(true);</p>
+<p>threadPool.start(my_runnable);<br>threadPool.start(my_runnable_2);</p>
+<pre><code>## 4.QtConcurrent
+&amp;emsp;&amp;emsp;少量代码需要使用多线程的时候使用（该函数可能不会立即运行; 函数只有在线程可用时才会运行）。  
+1）pro文件中添加模块  
+</code></pre>
+<p>QT += concurrent  </p>
+<pre><code>2）代码示例
+</code></pre>
+<p>//示例一<br>//定义<br>QString hello(QString name)<br>{<br>    qDebug() &lt;&lt; “Hello” &lt;&lt; name &lt;&lt; “from” &lt;&lt; QThread::currentThread();<br>    return name;<br>}</p>
+<p>//调用<br>QFuture<QString> f1 = QtConcurrent::run(hello, QString(“Alice”));<br>QFuture<QString> f2 = QtConcurrent::run(&amp;threadPool, hello, QString(“Bob”));<br>f1.waitForFinished();<br>f2.waitForFinished();</p>
+<p>qDebug()&lt;&lt;f1.result();<br>qDebug()&lt;&lt;f2.result();</p>
+<p>//输出<br>Hello “Alice” from QThread(0x1b1562a8, name = “Thread (pooled)”)<br>Hello “Bob” from QThread(0x1b156248, name = “Thread (pooled)”)<br>“Alice”<br>“Bob”</p>
+<pre><code>
+</code></pre>
+<p>//示例二<br>#if 1<br>    //调用外部函数<br>    QFuture<void> f1 =QtConcurrent::run(func,QString(index++));<br>    //调用类成员函数<br>    QFuture<void> f2 =QtConcurrent::run(this,&amp;Widget::myFunc,QString(“aaa”));<br>#else  //使用Lambda函数实现<br>    QFuture &lt; void &gt; future =  QtConcurrent::run(<a href="">=</a>{<br>        qDebug() &lt;&lt; __FUNCTION__  &lt;&lt; QThread::currentThreadId() &lt;&lt; QThread::currentThread();<br>    });<br>    QFuture &lt; void &gt; future2 = QtConcurrent::run(<a href="">=</a>{<br>        qDebug() &lt;&lt; <strong>FUNCTION</strong>  &lt;&lt; QThread::currentThreadId() &lt;&lt; QThread::currentThread();<br>    });<br>#endif</p>
+<pre><code>
+## 5.关闭线程
+&amp;emsp;&amp;emsp;在析构函数中使用终止函数：
+</code></pre>
+<p>~WorkerThread()<br>{<br>    // 请求终止<br>    requestInterruption();<br>    quit();<br>    wait();<br>}</p>
+<pre><code># 参考链接
+* Qt多线程Connect参数说明 https://www.cnblogs.com/wlzy/p/6802479.html 
+* Qt线程池QRunnable相关函数定义 https://www.cnblogs.com/sherlock-lin/articles/11708966.html 
+* QThread常用函数 https://www.cnblogs.com/linuxAndMcu/p/11076305.html#_label1
+* QT多线程编程（全） https://blog.51cto.com/9291927/1879757
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -472,6 +616,13 @@
 </script>
 
 
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -480,11 +631,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>
